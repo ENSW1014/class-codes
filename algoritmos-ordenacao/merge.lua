@@ -1,3 +1,5 @@
+-- 👏local function pif(pub, name, path)
+
 function mergesort(A, inicio, fim)
     if (inicio < fim) then
         local meio = math.floor((inicio + fim) / 2)
@@ -71,6 +73,9 @@ function merge(A, inicio, meio, fim)
             -- esq[4] = A[meio+i] = A[5+4] = A[9]
             -- esq[5] = A[meio+i] = A[5+5] = A[10]
 
+A = {}
+for i=1,10 do
+    A[i] = math.random(99)
 end
 
 function printNumbers(A)
@@ -81,19 +86,13 @@ function printNumbers(A)
     io.write(string.format("] \n"))
 end
 
-A = {}
-for i=1,10 do
-    A[i] = math.random(99)
-end
 
 printNumbers(A)
 -- A.length == #A
 
-mergesort(A, 1, #A)
+selectionsort(A, 1, #A)
 
 printNumbers(A)
-
-
 -- 01. mergesort(A[0...n - 1], inicio, fim)
 -- 02. |   se(inicio < fim)
 -- 03. |   |   meio ← (inicio + fim) / 2 //calcula o meio
