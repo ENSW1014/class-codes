@@ -1,4 +1,4 @@
--- 👏local function pif(pub, name, path)
+-- local function pif(pub, name, path)
 
 function mergesort(A, inicio, fim)
     if (inicio < fim) then
