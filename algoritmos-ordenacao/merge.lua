@@ -1,16 +1,17 @@
 -- local function pif(pub, name, path)
+local mergelib = {}
 
-function mergesort(A, inicio, fim)
+function mergelib.mergesort(A, inicio, fim)
     if (inicio < fim) then
         local meio = math.floor((inicio + fim) / 2)
         -- print('inicio %a - meio(%a) - fim %a', inicio, meio, fim)
-        io.write(string.format('mergesort(%i, %i, %i) \n', inicio, meio, fim))
-        mergesort(A, inicio, meio)
-        mergesort(A, meio + 1, fim)
+        -- io.write(string.format('mergesort(%i, %i, %i) \n', inicio, meio, fim))
+        mergelib.mergesort(A, inicio, meio)
+        mergelib.mergesort(A, meio + 1, fim)
         merge(A, inicio, meio, fim) -- funde os subvetores
     end
 end
- 
+
 function merge(A, inicio, meio, fim)
     local tamEsq = meio - inicio + 1 -- 02. |   tamEsq ← meio - inicio + 1 //tamanho do subvetor esquerdo
     local tamDir = fim - meio  -- 03. |   tamDir ← fim - meio //tamanho do subvetor direito
@@ -47,7 +48,9 @@ function merge(A, inicio, meio, fim)
             idxDir = idxDir + 1  -- 30. |   |   |   idxDir ← idxDir + 1
         end-- 31. |   |   fim_se
     end -- 32. |   fim_para
+end
 
+return mergelib
     -- A = [84, 40, 78, 80, 91, 20, 34, 77, 28, 55]
     -- inicio = 1
     -- fim = 10
@@ -73,26 +76,26 @@ function merge(A, inicio, meio, fim)
             -- esq[4] = A[meio+i] = A[5+4] = A[9]
             -- esq[5] = A[meio+i] = A[5+5] = A[10]
 
-A = {}
-for i=1,10 do
-    A[i] = math.random(99)
-end
+-- A = {}
+-- for i=1,10 do
+--     A[i] = math.random(99)
+-- end
 
-function printNumbers(A)
-    io.write(string.format("["))
-    for i=1,#A do
-        io.write(string.format("%i ", A[i]))
-    end
-    io.write(string.format("] \n"))
-end
+-- function printNumbers(A)
+--     io.write(string.format("["))
+--     for i=1,#A do
+--         io.write(string.format("%i ", A[i]))
+--     end
+--     io.write(string.format("] \n"))
+-- end
 
 
-printNumbers(A)
--- A.length == #A
+-- printNumbers(A)
+-- -- A.length == #A
 
-selectionsort(A, 1, #A)
+-- selectionsort(A, 1, #A)
 
-printNumbers(A)
+-- printNumbers(A)
 -- 01. mergesort(A[0...n - 1], inicio, fim)
 -- 02. |   se(inicio < fim)
 -- 03. |   |   meio ← (inicio + fim) / 2 //calcula o meio
